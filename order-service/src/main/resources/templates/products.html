@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Product Code</th>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${productsList.empty}">
+        <td colspan="2"> No Books Available </td>
+    </tr>
+    <tr th:each="product : ${productsList}">
+        <td th:text=" ${product.id}"></td>
+        <td th:text="${product.productCode}"></td>
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.description}"></td>
+        <td th:text="${product.price}"></td>
+    </tr>
+    </tbody>
+</table>
+<br><br>
+<a href="./home">Home</a>
+
+</body>
+</html>

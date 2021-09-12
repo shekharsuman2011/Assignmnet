@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>KAIS STORE</title>
+</head>
+<body>
+    <form action="#" th:action="@{./login}"   th:object="${user}" method="post">
+        Enter UserName : <input type="text" th:field="*{userEmail}"><br><br>
+        Enter password : <input type="password" th:field="*{userPassword}"><br><br>
+        <input type="submit" value="Login">
+    </form>
+    <h6 th:text="${error}"></h6>
+</body>
+</html>

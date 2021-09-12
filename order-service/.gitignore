@@ -1,0 +1,16 @@
+.idea/
+*/.idea/
+
+*.iml
+out/
+
+*.class
+
+lib/
+*/lib/
+
+/target
+*/target/
+
+/web
+*/web/

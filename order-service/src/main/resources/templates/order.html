@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Product Code</th>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Available Quantity</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${productsList.empty}">
+            <td colspan="2"> We will be back soon </td>
+        </tr>
+        <tr th:each="product : ${productsList}">
+            <td th:text=" ${product.id}"></td>
+            <td th:text="${product.productCode}"></td>
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.description}"></td>
+            <td th:text="${product.price}"></td>
+            <td th:text="${product.availableQuantity}"></td>
+
+        </tr>
+        </tbody>
+    </table><br><br>
+
+        <form method="post" th:object="${orderItems} " th:action="@{./addItems}">
+            Item Id<input type="text" th:field="*{productCode}">
+            Quantity<input type="text" th:field="*{quantity}">
+            <input type="submit" value="save">
+        </form><br><br>
+    <form method="post" th:action="@{./confirmOrder}">
+        <input type="submit" value="order">
+    </form>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Product Code</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tr th:if="${orderItemsList.empty}">
+            <td colspan="2"> Cart is empty </td>
+        </tr>
+        <tbody>
+        <tr th:each="orderItem : ${orderItemsList}">
+            <td th:text=" ${orderItem.productCode}"></td>
+            <td th:text="${orderItem.quantity}"></td>
+            <td th:text="${orderItem.productPrice}"></td>
+
+
+        </tbody>
+    </table>
+<h6 th:text="${error}"></h6><br><br>
+<a href="./home">Home</a>
+</body>
+</html>
